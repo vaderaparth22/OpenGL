@@ -14,6 +14,9 @@ private:
     float positionX;
     float positionY;
     float positionZ;
+    float r;
+    float g;
+    float b;
 public:
     void setPositionX(float pos)
     {
@@ -55,6 +58,13 @@ public:
         return isEnemy;
     }
 
+    void setRGB(float r,float g,float b)
+    {
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+
     void Draw()
     {
         glPushMatrix();
@@ -63,7 +73,7 @@ public:
 
         glBegin(GL_QUADS);
 
-        glColor3ub(50, 100, 0);
+        glColor3ub(r, g, b);
         glVertex3d(1, 1, 1);
         glVertex3d(1, 1, -1);
         glVertex3d(-1, 1, -1);
@@ -198,6 +208,7 @@ float inputX = 0;
 float inputZ = 0;
 int randomBetween;
 std::vector<Cube> cubes;
+
 Player player;
 
 void drawFloor();
@@ -214,6 +225,8 @@ int main(int argc, char** argv) {
 
     inputX = 0;
     inputZ = 0;
+
+    player.setPositionX(-2.0f);
 
     srand(time(NULL));
 
@@ -307,8 +320,6 @@ void setAllCubePositionsAtStart()
 {
     //MAKE CUBES AND ADD IN VECTOR
 
-    randomBetween = rand() % (2-1 + 1) + 1;
-
     float xPos = 24.0f;
     float yPos = -1.0f;
     float zPos = -18.0f;
@@ -320,6 +331,19 @@ void setAllCubePositionsAtStart()
         cubeForX.setPositionX(xPos);
         cubeForX.setPositionY(yPos);
         cubeForX.setPositionZ(zPos);
+
+        randomBetween = rand() % (2-1 + 1) + 1;
+
+        if(randomBetween == 1)
+        {
+            cubeForX.setIsEnemy(true);
+            cubeForX.setRGB(255,0,0);
+        }
+        else
+        {
+            cubeForX.setRGB(50,100,0);
+        }
+
         cubes.push_back(cubeForX);
 
         for (int j = 0; j < 6; ++j)
@@ -330,6 +354,19 @@ void setAllCubePositionsAtStart()
             cubeForZ.setPositionX(cubeForX.getPositionX());
             cubeForZ.setPositionY(yPos);
             cubeForZ.setPositionZ(zPos);
+
+            randomBetween = rand() % (2-1 + 1) + 1;
+
+            if(randomBetween == 1)
+            {
+                cubeForZ.setIsEnemy(true);
+                cubeForZ.setRGB(255,0,0);
+            }
+            else
+            {
+                cubeForZ.setRGB(50,100,0);
+            }
+
             cubes.push_back(cubeForZ);
         }
 
