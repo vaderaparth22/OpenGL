@@ -7,6 +7,93 @@
 #include <fstream>
 #include <iostream>
 
+class Player
+{
+private:
+    float positionX;
+    float positionY;
+    float positionZ;
+public:
+    void setPositionX(float pos)
+    {
+        this->positionX = pos;
+    }
+
+    void setPositionY(float pos)
+    {
+        this->positionY = pos;
+    }
+
+    void setPositionZ(float pos)
+    {
+        this->positionZ = pos;
+    }
+
+    float getPositionX()
+    {
+        return this->positionX;
+    }
+
+    float getPositionY()
+    {
+        return this->positionY;
+    }
+
+    float getPositionZ()
+    {
+        return this->positionZ;
+    }
+
+    void Draw()
+    {
+        glPushMatrix();
+        glTranslatef(this->getPositionX(),this->getPositionY(),this->getPositionZ());
+        glScalef(1.0f,3.0f,1.0f);
+
+        glBegin(GL_QUADS);
+
+        glColor3ub(50, 50, 50);
+        glVertex3d(1, 1, 1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, 1, 1);
+
+        glColor3ub(0, 255, 0);
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, 1, 1);
+
+        glColor3ub(0, 0, 255);
+        glVertex3d(-1, -1, 1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, -1, 1);
+
+        glColor3ub(255, 255, 0);
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, -1, 1);
+
+        glColor3ub(200, 200, 150);
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, 1, -1);
+
+        glColor3ub(255, 0, 255);
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, 1, 1);
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, -1, 1);
+
+        glEnd();
+        glPopMatrix();
+    }
+};
+
+
 class Cube
 {
 private:
@@ -112,91 +199,42 @@ public:
         glEnd();
         glPopMatrix();
     }
-};
 
-class Player
-{
-private:
-    float positionX;
-    float positionY;
-    float positionZ;
-public:
-    void setPositionX(float pos)
+    bool OnCollisionEnter(Player* player)
     {
-        this->positionX = pos;
-    }
+        float redLeft = this->getPositionX();
+        float redRight = 0.3f + 1;
+        float redTop = this->getPositionY();
+        float redBottom = this->getPositionY() + 0.3f;
+        float redForward = this->getPositionZ();
+        float redBackward = this->getPositionZ() + 1.0f;
 
-    void setPositionY(float pos)
-    {
-        this->positionY = pos;
-    }
+        float blueLeft = player->getPositionX();
+        float blueRight = player->getPositionX() + 1.0f;
+        float blueTop = player->getPositionY();
+        float blueBottom = player->getPositionY() + 3.0f;
+        float blueForward = player->getPositionZ();
+        float blueBackward = player->getPositionZ() + 1.0f;
 
-    void setPositionZ(float pos)
-    {
-        this->positionZ = pos;
-    }
+        if ( redLeft > blueRight )
+            return false;
 
-    float getPositionX()
-    {
-        return this->positionX;
-    }
+        if ( redRight < blueLeft )
+            return false;
 
-    float getPositionY()
-    {
-        return this->positionY;
-    }
+        if ( redTop > blueBottom )
+            return false;
 
-    float getPositionZ()
-    {
-        return this->positionZ;
-    }
+        if ( redBottom < blueTop )
+            return false;
 
-    void Draw()
-    {
-        glPushMatrix();
-        glTranslatef(this->getPositionX(),this->getPositionY(),this->getPositionZ());
-        glScalef(1.0f,3.0f,1.0f);
+//        if(redForward > blueBackward)
+//            return false;
+//
+//        if(redBackward < blueForward)
+//            return false;
 
-        glBegin(GL_QUADS);
-
-        glColor3ub(50, 50, 50);
-        glVertex3d(1, 1, 1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, 1, 1);
-
-        glColor3ub(0, 255, 0);
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, 1, 1);
-
-        glColor3ub(0, 0, 255);
-        glVertex3d(-1, -1, 1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, -1, 1);
-
-        glColor3ub(255, 255, 0);
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, -1, 1);
-
-        glColor3ub(200, 200, 150);
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, 1, -1);
-
-        glColor3ub(255, 0, 255);
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, 1, 1);
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, -1, 1);
-
-        glEnd();
-        glPopMatrix();
+        return true;
     }
 };
 
@@ -208,8 +246,8 @@ float inputX = 0;
 float inputZ = 0;
 float movementSpeed = .6f;
 int randomBetween;
-std::vector<Cube> cubes;
 
+std::vector<Cube> cubes;
 Player player;
 
 void drawFloor();
@@ -221,7 +259,7 @@ int main(int argc, char** argv) {
     SDL_Init(SDL_INIT_VIDEO);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    win = SDL_CreateWindow("OpenGl Test", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    win = SDL_CreateWindow("OpenGL Final Project", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     SDL_GLContext context = SDL_GL_CreateContext(win);
 
     inputX = 0;
@@ -280,6 +318,11 @@ int main(int argc, char** argv) {
             for (int i = 0; i < cubes.size(); ++i)
             {
                 cubes[i].Draw();
+
+                if(cubes[i].OnCollisionEnter(&player))
+                {
+                    cubes.erase(cubes.begin() + i);
+                }
             }
         }
 
