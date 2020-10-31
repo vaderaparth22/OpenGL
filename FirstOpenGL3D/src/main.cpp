@@ -247,6 +247,7 @@ float inputX = 0;
 float inputZ = 0;
 float movementSpeed = .6f;
 int randomBetween;
+float MAX_BOUND_VALUE = 18.6;
 
 std::vector<Cube> cubes;
 Player* player = new Player();
@@ -268,7 +269,9 @@ int main(int argc, char** argv) {
     inputX = 0;
     inputZ = 0;
 
-    player->setPositionX(-2.0f);
+    player->setPositionX(-5.0f);
+    player->setPositionY(2.0f);
+    player->setPositionZ(10.0f);
 
     srand(time(NULL));
 
@@ -296,18 +299,33 @@ int main(int argc, char** argv) {
 
         SDL_PollEvent(&event);
         states = SDL_GetKeyboardState(NULL);
+
         if (event.type == SDL_QUIT)
             isRunning = false;
 
         if (states[SDL_SCANCODE_LEFT])
-            inputX += movementSpeed;
-        if (states[SDL_SCANCODE_RIGHT])
-            inputX -= movementSpeed;
-        if (states[SDL_SCANCODE_UP])
-            inputZ += movementSpeed;
-        if (states[SDL_SCANCODE_DOWN])
-            inputZ -= movementSpeed;
+        {
+            if(player->getPositionX() < MAX_BOUND_VALUE)
+                inputX += movementSpeed;
+        }
 
+        if (states[SDL_SCANCODE_RIGHT])
+        {
+            if(player->getPositionX() > -MAX_BOUND_VALUE)
+                inputX -= movementSpeed;
+        }
+
+        if (states[SDL_SCANCODE_UP])
+        {
+            if(player->getPositionZ() < MAX_BOUND_VALUE)
+                inputZ += movementSpeed;
+        }
+
+        if (states[SDL_SCANCODE_DOWN])
+        {
+            if(player->getPositionZ() > -MAX_BOUND_VALUE)
+                inputZ -= movementSpeed;
+        }
 
         drawFloor(idTextureGround);
 
@@ -337,6 +355,7 @@ int main(int argc, char** argv) {
         SDL_GL_SwapWindow(win);
     }
 
+    delete(player);
     glDeleteTextures(1, &idTextureGround);
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(win);
@@ -357,7 +376,7 @@ void drawFloor(GLuint textureId)
 
     glBegin(GL_QUADS);
 
-    glColor3ub(255, 255, 255); //face green
+    glColor3ub(255, 255, 255);
     glTexCoord2f(0.0, 0.0);
     glVertex3d(1, -2, -1);
     glTexCoord2f(1.0, 0);
