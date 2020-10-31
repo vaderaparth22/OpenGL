@@ -468,7 +468,7 @@ int main(int argc, char** argv)
 
         //drawPyramid();
         drawGround(idTextureSol);
-        drawUpperFloor(idTextureSol2);s
+        drawUpperFloor(idTextureSol2);
         drawBoxes(player);
 
         if(!isGameOver)
