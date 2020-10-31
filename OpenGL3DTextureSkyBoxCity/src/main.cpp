@@ -92,15 +92,89 @@ public:
 class Player
 {
 private:
-    
+    float posX;
+    float posY;
+    float posZ;
+
+public:
+    void draw()
+    {
+        glPushMatrix();
+        glTranslatef(this->getPosX(),this->getPosY(),this->getPosZ());
+        glScaled(1,2,1);
+
+        glBegin(GL_QUADS);
+        glColor3ub(255, 0, 255); //face rouge
+        glVertex3d(1, 1, 1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, 1, 1);
+
+        glColor3ub(0, 255, 0); //face verte
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, 1, 1);
+
+        glColor3ub(0, 0, 255); //face bleue
+        glVertex3d(-1, -1, 1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, -1, 1);
+
+        glColor3ub(120, 120, 120); //face jaune
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, -1, 1);
+
+        glColor3ub(120, 255, 120); //face cyan
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, 1, -1);
+
+        glColor3ub(255, 0, 255); //face magenta
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, 1, 1);
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, -1, 1);
+
+        glEnd();
+        glPopMatrix();
+    }
+
+    float getPosX() const {
+        return posX;
+    }
+
+    void setPosX(float posX) {
+        Player::posX = posX;
+    }
+
+    float getPosY() const {
+        return posY;
+    }
+
+    void setPosY(float posY) {
+        Player::posY = posY;
+    }
+
+    float getPosZ() const {
+        return posZ;
+    }
+
+    void setPosZ(float posZ) {
+        Player::posZ = posZ;
+    }
 };
 
 SDL_Window* win;
 SDL_GLContext context;
 
 bool isRunning = true;
-float dxCamera = 0;
-float dyCamera = 0;
+float inputX = 0;
+float inputY = 0;
 std::vector<Box> boxes;
 static const Uint32 MS_PER_SECOND = 1000;
 
@@ -185,7 +259,7 @@ void drawGround(GLuint textureId)
 {
     //FLOOR
     glPushMatrix();
-    glTranslatef(0.0f,-1.0f,0.0f);
+    glTranslatef(0.0f,-5.0f,0.0f);
     glScalef(20.0f,0.0f,20.0f);
 
     glEnable(GL_TEXTURE_2D);
@@ -242,7 +316,7 @@ void drawUpperFloor(GLuint textureId)
 void spawnBox()
 {
     Box box;
-    box.setPosY(10.0f);
+    box.setPosY(15.0f);
     boxes.push_back(box);
 }
 
@@ -251,11 +325,13 @@ void drawBoxes()
     if(!boxes.empty())
     {
         for (int i = 0; i < boxes.size(); ++i) {
-            boxes[i].setGravity(0.2f);
+            boxes[i].setGravity(0.1f);
             boxes[i].draw();
         }
     }
 }
+
+
 
 int main(int argc, char** argv)
 {
@@ -266,8 +342,8 @@ int main(int argc, char** argv)
     win = SDL_CreateWindow("OpenGl Test", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     SDL_GLContext context = SDL_GL_CreateContext(win);
 
-    dxCamera = 0;
-    dyCamera = 0;
+    inputX = 0;
+    inputY = 0;
     Uint32 timer = 0;
     Uint32 previousTime = SDL_GetTicks();
     Uint32 currentTime = SDL_GetTicks();
@@ -277,6 +353,7 @@ int main(int argc, char** argv)
     GLuint idTextureSol2 = loadTexture("assets/img/sol.jpg");
     GLuint idTextureSkyBox = loadTexture("assets/img/skybox.jpg");
 
+    Player player;
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -305,25 +382,29 @@ int main(int argc, char** argv)
 
        //glPushMatrix();
         //glRotated(45, 0,1,0);
-        //gluLookAt(dxCamera+4, dyCamera+4,4, dxCamera, dyCamera, 4, 0, 0, 1);
+        //gluLookAt(inputX+4, inputY+4,4, inputX, inputY, 4, 0, 0, 1);
         glTranslated(0,-3,30);
         gluLookAt(-50, 10, -50, 0, 0, 0, 0, 1, 0);
       // glPopMatrix();
 
-        //gestion evenement
         SDL_PollEvent(&event);
         states = SDL_GetKeyboardState(NULL);
         if (event.type == SDL_QUIT)
             isRunning = false;
 
         if (states[SDL_SCANCODE_LEFT])
-            dxCamera += .5;
+            inputX += .5;
         if (states[SDL_SCANCODE_RIGHT])
-            dxCamera -= .5;
+            inputX -= .5;
         if (states[SDL_SCANCODE_UP])
-            dyCamera -= .5;
+            inputY += .5;
         if (states[SDL_SCANCODE_DOWN])
-            dyCamera += .5;
+            inputY -= .5;
+
+        player.setPosX(inputX);
+        player.setPosY(-3.0);
+        player.setPosZ(inputY);
+        player.draw();
 
         //drawPyramid();
         drawGround(idTextureSol);
