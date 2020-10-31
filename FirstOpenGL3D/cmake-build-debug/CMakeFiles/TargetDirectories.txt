@@ -1,0 +1,3 @@
+D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir
+D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/CMakeFiles/rebuild_cache.dir
