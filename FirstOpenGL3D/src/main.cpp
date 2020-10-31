@@ -206,6 +206,7 @@ SDL_GLContext context;
 bool isRunning = true;
 float inputX = 0;
 float inputZ = 0;
+float movementSpeed = .6f;
 int randomBetween;
 std::vector<Cube> cubes;
 
@@ -258,13 +259,13 @@ int main(int argc, char** argv) {
             isRunning = false;
 
         if (states[SDL_SCANCODE_LEFT])
-            inputX += .2;
+            inputX += movementSpeed;
         if (states[SDL_SCANCODE_RIGHT])
-            inputX -= .2;
+            inputX -= movementSpeed;
         if (states[SDL_SCANCODE_UP])
-            inputZ += .2;
+            inputZ += movementSpeed;
         if (states[SDL_SCANCODE_DOWN])
-            inputZ -= .2;
+            inputZ -= movementSpeed;
 
 
         drawFloor();
@@ -334,14 +335,14 @@ void setAllCubePositionsAtStart()
 
         randomBetween = rand() % (2-1 + 1) + 1;
 
-        if(randomBetween == 1)
+        if(randomBetween == 2)
         {
             cubeForX.setIsEnemy(true);
             cubeForX.setRGB(255,0,0);
         }
         else
         {
-            cubeForX.setRGB(50,100,0);
+            cubeForX.setRGB(30,100,0);
         }
 
         cubes.push_back(cubeForX);
@@ -357,14 +358,14 @@ void setAllCubePositionsAtStart()
 
             randomBetween = rand() % (2-1 + 1) + 1;
 
-            if(randomBetween == 1)
+            if(randomBetween == 2)
             {
                 cubeForZ.setIsEnemy(true);
                 cubeForZ.setRGB(255,0,0);
             }
             else
             {
-                cubeForZ.setRGB(50,100,0);
+                cubeForZ.setRGB(30,100,0);
             }
 
             cubes.push_back(cubeForZ);
