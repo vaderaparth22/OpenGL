@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\OpenGL3DTextureSkyBox.dir/objects.a
+C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\OpenGL3DTextureSkyBox.dir/objects.a @CMakeFiles\OpenGL3DTextureSkyBox.dir\objects1.rsp
+C:\msys64\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\OpenGL3DTextureSkyBox.dir/objects.a -Wl,--no-whole-archive  -o OpenGL3DTextureSkyBox.exe -Wl,--out-implib,libOpenGL3DTextureSkyBox.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\OpenGL3DTextureSkyBox.dir\linklibs.rsp
