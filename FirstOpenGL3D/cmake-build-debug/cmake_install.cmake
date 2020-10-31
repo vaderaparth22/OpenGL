@@ -1,4 +1,4 @@
-# Install script for directory: D:/Games/Setups/FirstOpenGL3D
+# Install script for directory: D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

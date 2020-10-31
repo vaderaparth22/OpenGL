@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Games/Setups/FirstOpenGL3D/src/MonCarre.cpp" "D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
-  "D:/Games/Setups/FirstOpenGL3D/src/main.cpp" "D:/Games/Setups/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/MonCarre.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/main.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

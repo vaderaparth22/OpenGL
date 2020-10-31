@@ -62,10 +62,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Games\Setups\FirstOpenGL3D
+CMAKE_SOURCE_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Games\Setups\FirstOpenGL3D\cmake-build-debug
+CMAKE_BINARY_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FirstOpenGL3D.dir/depend.make
@@ -78,29 +78,29 @@ include CMakeFiles/FirstOpenGL3D.dir/flags.make
 
 CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj: CMakeFiles/FirstOpenGL3D.dir/flags.make
 CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj: ../src/MonCarre.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Games\Setups\FirstOpenGL3D\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.obj -c D:\Games\Setups\FirstOpenGL3D\src\MonCarre.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.obj -c "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\MonCarre.cpp"
 
 CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Games\Setups\FirstOpenGL3D\src\MonCarre.cpp > CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\MonCarre.cpp" > CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.i
 
 CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Games\Setups\FirstOpenGL3D\src\MonCarre.cpp -o CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\MonCarre.cpp" -o CMakeFiles\FirstOpenGL3D.dir\src\MonCarre.cpp.s
 
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj: CMakeFiles/FirstOpenGL3D.dir/flags.make
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Games\Setups\FirstOpenGL3D\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.obj -c D:\Games\Setups\FirstOpenGL3D\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.obj -c "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\main.cpp"
 
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Games\Setups\FirstOpenGL3D\src\main.cpp > CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\main.cpp" > CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.i
 
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Games\Setups\FirstOpenGL3D\src\main.cpp -o CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\src\main.cpp" -o CMakeFiles\FirstOpenGL3D.dir\src\main.cpp.s
 
 # Object files for target FirstOpenGL3D
 FirstOpenGL3D_OBJECTS = \
@@ -116,7 +116,7 @@ FirstOpenGL3D.exe: CMakeFiles/FirstOpenGL3D.dir/build.make
 FirstOpenGL3D.exe: CMakeFiles/FirstOpenGL3D.dir/linklibs.rsp
 FirstOpenGL3D.exe: CMakeFiles/FirstOpenGL3D.dir/objects1.rsp
 FirstOpenGL3D.exe: CMakeFiles/FirstOpenGL3D.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Games\Setups\FirstOpenGL3D\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FirstOpenGL3D.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FirstOpenGL3D.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\FirstOpenGL3D.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -129,6 +129,6 @@ CMakeFiles/FirstOpenGL3D.dir/clean:
 .PHONY : CMakeFiles/FirstOpenGL3D.dir/clean
 
 CMakeFiles/FirstOpenGL3D.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Games\Setups\FirstOpenGL3D D:\Games\Setups\FirstOpenGL3D D:\Games\Setups\FirstOpenGL3D\cmake-build-debug D:\Games\Setups\FirstOpenGL3D\cmake-build-debug D:\Games\Setups\FirstOpenGL3D\cmake-build-debug\CMakeFiles\FirstOpenGL3D.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\FirstOpenGL3D\cmake-build-debug\CMakeFiles\FirstOpenGL3D.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/FirstOpenGL3D.dir/depend
 
