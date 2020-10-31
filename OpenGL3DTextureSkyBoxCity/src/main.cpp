@@ -5,89 +5,8 @@
 #include "Utils.h"
 #include "utils/sdlglutils.h"
 #include <vector>
-
-class Box
-{
-private:
-    float posX;
-    float posY;
-    float posZ;
-public:
-    float getPosX() const {
-        return posX;
-    }
-
-    void setPosX(float posX) {
-        Box::posX = posX;
-    }
-
-    float getPosY() const {
-        return posY;
-    }
-
-    void setPosY(float posY) {
-        Box::posY = posY;
-    }
-
-    float getPosZ() const {
-        return posZ;
-    }
-
-    void setPosZ(float posZ) {
-        Box::posZ = posZ;
-    }
-
-    void draw()
-    {
-        glPushMatrix();
-        glTranslatef(this->getPosX(),this->getPosY(),this->getPosZ());
-
-        glBegin(GL_QUADS);
-        glColor3ub(255, 0, 0); //face rouge
-        glVertex3d(1, 1, 1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, 1, 1);
-
-        glColor3ub(0, 255, 0); //face verte
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, 1, 1);
-
-        glColor3ub(0, 0, 255); //face bleue
-        glVertex3d(-1, -1, 1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, -1, 1);
-
-        glColor3ub(255, 255, 0); //face jaune
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, -1, 1);
-
-        glColor3ub(0, 255, 255); //face cyan
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, 1, -1);
-
-        glColor3ub(255, 0, 255); //face magenta
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, 1, 1);
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, -1, 1);
-
-        glEnd();
-        glPopMatrix();
-    }
-
-    void setGravity(float gravityValue)
-    {
-        setPosY(getPosY() - gravityValue);
-    }
-};
+#include <time.h>
+#include <iostream>
 
 class Player
 {
@@ -169,12 +88,128 @@ public:
     }
 };
 
+class Box
+{
+private:
+    float posX;
+    float posY;
+    float posZ;
+public:
+    float getPosX() const {
+        return posX;
+    }
+
+    void setPosX(float posX) {
+        Box::posX = posX;
+    }
+
+    float getPosY() const {
+        return posY;
+    }
+
+    void setPosY(float posY) {
+        Box::posY = posY;
+    }
+
+    float getPosZ() const {
+        return posZ;
+    }
+
+    void setPosZ(float posZ) {
+        Box::posZ = posZ;
+    }
+
+    void setRandomXZ()
+    {
+        float randomX = rand() % 19 + -19;
+        float randomZ = rand() % 19 + -19;
+        setPosX(randomX);
+        setPosZ(randomZ);
+    }
+
+    void draw()
+    {
+        glPushMatrix();
+        glTranslatef(this->getPosX(),this->getPosY(),this->getPosZ());
+
+        glBegin(GL_QUADS);
+        glColor3ub(255, 0, 0); //face rouge
+        glVertex3d(1, 1, 1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, 1, 1);
+
+        glColor3ub(0, 255, 0); //face verte
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, 1, 1);
+
+        glColor3ub(0, 0, 255); //face bleue
+        glVertex3d(-1, -1, 1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(1, -1, 1);
+
+        glColor3ub(255, 255, 0); //face jaune
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, 1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, -1, 1);
+
+        glColor3ub(0, 255, 255); //face cyan
+        glVertex3d(1, 1, -1);
+        glVertex3d(1, -1, -1);
+        glVertex3d(-1, -1, -1);
+        glVertex3d(-1, 1, -1);
+
+        glColor3ub(255, 0, 255); //face magenta
+        glVertex3d(1, -1, 1);
+        glVertex3d(1, 1, 1);
+        glVertex3d(-1, 1, 1);
+        glVertex3d(-1, -1, 1);
+
+        glEnd();
+        glPopMatrix();
+    }
+
+    void setGravity(float gravityValue)
+    {
+        setPosY(getPosY() - gravityValue);
+    }
+
+    bool isColliding(Player player)
+    {
+        SDL_Rect  myRect;
+        myRect.x = getPosX();
+        myRect.y = getPosY();
+        myRect.w = 1;
+        myRect.h = 1;
+
+        SDL_Rect playerRect;
+        playerRect.x = player.getPosX();
+        playerRect.y = player.getPosY();
+        playerRect.w = 1;
+        playerRect.h = 5;
+
+        if(SDL_HasIntersection(&myRect, &playerRect))
+        {
+            return true;
+        }
+
+        return false;
+    }
+};
+
+
 SDL_Window* win;
 SDL_GLContext context;
 
 bool isRunning = true;
 float inputX = 0;
 float inputY = 0;
+int count = 0;
+bool isGameOver = false;
 std::vector<Box> boxes;
 static const Uint32 MS_PER_SECOND = 1000;
 
@@ -317,16 +352,23 @@ void spawnBox()
 {
     Box box;
     box.setPosY(15.0f);
+    box.setRandomXZ();
     boxes.push_back(box);
 }
 
-void drawBoxes()
+void drawBoxes(Player player)
 {
     if(!boxes.empty())
     {
         for (int i = 0; i < boxes.size(); ++i) {
             boxes[i].setGravity(0.1f);
             boxes[i].draw();
+
+            if(boxes[i].isColliding(player))
+            {
+                count++;
+                boxes.erase(boxes.begin() + i);
+            }
         }
     }
 }
@@ -341,6 +383,8 @@ int main(int argc, char** argv)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     win = SDL_CreateWindow("OpenGl Test", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     SDL_GLContext context = SDL_GL_CreateContext(win);
+
+    srand(time(NULL));
 
     inputX = 0;
     inputY = 0;
@@ -393,13 +437,29 @@ int main(int argc, char** argv)
             isRunning = false;
 
         if (states[SDL_SCANCODE_LEFT])
-            inputX += .5;
+        {
+            if(player.getPosX() < 19)
+                inputX += .5;
+        }
+
         if (states[SDL_SCANCODE_RIGHT])
-            inputX -= .5;
+        {
+            if(player.getPosX() > -19)
+                inputX -= .5;
+        }
+
         if (states[SDL_SCANCODE_UP])
-            inputY += .5;
+        {
+            if(player.getPosZ() < 19)
+                inputY += .5;
+        }
+
         if (states[SDL_SCANCODE_DOWN])
-            inputY -= .5;
+        {
+            if(player.getPosZ() > -19)
+                inputY -= .5;
+        }
+
 
         player.setPosX(inputX);
         player.setPosY(-3.0);
@@ -408,28 +468,29 @@ int main(int argc, char** argv)
 
         //drawPyramid();
         drawGround(idTextureSol);
-        drawUpperFloor(idTextureSol2);
-        drawBoxes();
+        drawUpperFloor(idTextureSol2);s
+        drawBoxes(player);
 
-        timer += deltaTime;
-        if(timer >= 3000)
+        if(!isGameOver)
         {
-            spawnBox();
-            timer -= 3000;
+            timer += deltaTime;
+            if(timer >= 3000)
+            {
+                spawnBox();
+                timer -= 3000;
+            }
+
+            if(count >= 5)
+            {
+                isGameOver = true;
+                std::cout << "GAME OVER!" << std::endl;
+            }
         }
 
-//        glPushMatrix();
-//        drawCylinder();
-//        glPopMatrix();
-
-
-        //pause
         SDL_Delay(3);
-
         glFlush();
         SDL_GL_SwapWindow(win);
     }
-
 
     glDeleteTextures(1, &idTextureSol);
     glDeleteTextures(1, &idTextureSkyBox);
