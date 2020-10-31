@@ -88,6 +88,72 @@ public:
     }
 };
 
+class Ground
+{
+private:
+    float posX;
+    float posY;
+    float posZ;
+
+public:
+    void draw(GLuint textureId)
+    {
+        //FLOOR
+        glPushMatrix();
+        glTranslatef(0.0f,-5.0f,0.0f);
+        glScalef(20.0f,0.0f,20.0f);
+
+        setPosX(0.0f);
+        setPosY(-5.0f);
+        setPosZ(0.0f);
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, textureId);
+
+        glBegin(GL_QUADS);
+
+        glColor3ub(255, 255, 255);
+        glTexCoord2f(0.0, 0.0);
+        glVertex3d(1, -2, -1);
+        glTexCoord2f(1.0, 0);
+        glVertex3d(1, -2, 1);
+        glTexCoord2f(1.0, 1.0);
+        glVertex3d(-1, -2,1);
+        glTexCoord2f(0.0, 1.0);
+        glVertex3d(-1, -2, -1);
+
+        glEnd();
+
+        glDisable(GL_TEXTURE_2D);
+
+        glPopMatrix();
+    }
+
+    float getPosX() const {
+        return posX;
+    }
+
+    void setPosX(float posX) {
+        Ground::posX = posX;
+    }
+
+    float getPosY() const {
+        return posY;
+    }
+
+    void setPosY(float posY) {
+        Ground::posY = posY;
+    }
+
+    float getPosZ() const {
+        return posZ;
+    }
+
+    void setPosZ(float posZ) {
+        Ground::posZ = posZ;
+    }
+};
+
 class Box
 {
 private:
@@ -178,7 +244,7 @@ public:
         setPosY(getPosY() - gravityValue);
     }
 
-    bool isColliding(Player player)
+    bool isColliding(Player player, Ground ground)
     {
         SDL_Rect  myRect;
         myRect.x = getPosX();
@@ -189,10 +255,16 @@ public:
         SDL_Rect playerRect;
         playerRect.x = player.getPosX();
         playerRect.y = player.getPosY();
-        playerRect.w = 1;
+        playerRect.w = 2;
         playerRect.h = 5;
 
-        if(SDL_HasIntersection(&myRect, &playerRect))
+        SDL_Rect groundRect;
+        groundRect.x = ground.getPosX();
+        groundRect.y = ground.getPosY();
+        groundRect.w = 20;
+        groundRect.h = 5;
+
+        if(SDL_HasIntersection(&myRect, &playerRect) || SDL_HasIntersection(&myRect, &groundRect))
         {
             return true;
         }
@@ -200,6 +272,7 @@ public:
         return false;
     }
 };
+
 
 
 SDL_Window* win;
@@ -356,7 +429,7 @@ void spawnBox()
     boxes.push_back(box);
 }
 
-void drawBoxes(Player player)
+void drawBoxes(Player player, Ground ground)
 {
     if(!boxes.empty())
     {
@@ -364,7 +437,7 @@ void drawBoxes(Player player)
             boxes[i].setGravity(0.1f);
             boxes[i].draw();
 
-            if(boxes[i].isColliding(player))
+            if(boxes[i].isColliding(player, ground))
             {
                 count++;
                 boxes.erase(boxes.begin() + i);
@@ -398,6 +471,7 @@ int main(int argc, char** argv)
     GLuint idTextureSkyBox = loadTexture("assets/img/skybox.jpg");
 
     Player player;
+    Ground ground;
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -424,12 +498,8 @@ int main(int argc, char** argv)
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-       //glPushMatrix();
-        //glRotated(45, 0,1,0);
-        //gluLookAt(inputX+4, inputY+4,4, inputX, inputY, 4, 0, 0, 1);
         glTranslated(0,-3,30);
         gluLookAt(-50, 10, -50, 0, 0, 0, 0, 1, 0);
-      // glPopMatrix();
 
         SDL_PollEvent(&event);
         states = SDL_GetKeyboardState(NULL);
@@ -467,9 +537,9 @@ int main(int argc, char** argv)
         player.draw();
 
         //drawPyramid();
-        drawGround(idTextureSol);
+        ground.draw(idTextureSol);
         drawUpperFloor(idTextureSol2);
-        drawBoxes(player);
+        drawBoxes(player,ground);
 
         if(!isGameOver)
         {
