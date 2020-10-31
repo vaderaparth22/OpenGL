@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/MonCarre.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
   "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/main.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/sdlglutils.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/cmake-build-debug/CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

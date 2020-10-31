@@ -196,6 +196,33 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FirstOpenGL3D.dir\build.make CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/sdlglutils.obj: src/sdlglutils.cpp.obj
+
+.PHONY : src/sdlglutils.obj
+
+# target to build an object file
+src/sdlglutils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FirstOpenGL3D.dir\build.make CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.obj
+.PHONY : src/sdlglutils.cpp.obj
+
+src/sdlglutils.i: src/sdlglutils.cpp.i
+
+.PHONY : src/sdlglutils.i
+
+# target to preprocess a source file
+src/sdlglutils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FirstOpenGL3D.dir\build.make CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.i
+.PHONY : src/sdlglutils.cpp.i
+
+src/sdlglutils.s: src/sdlglutils.cpp.s
+
+.PHONY : src/sdlglutils.s
+
+# target to generate assembly for a file
+src/sdlglutils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FirstOpenGL3D.dir\build.make CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.s
+.PHONY : src/sdlglutils.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -211,6 +238,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/sdlglutils.obj
+	@echo ... src/sdlglutils.i
+	@echo ... src/sdlglutils.s
 .PHONY : help
 
 

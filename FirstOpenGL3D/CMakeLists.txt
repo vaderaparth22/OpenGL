@@ -26,7 +26,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(
         ${PROJECT_NAME_VALUE}
         ${source_files}
-        src/MonCarre.cpp src/MonCarre.h src/Utils.h)
+        src/MonCarre.cpp src/MonCarre.h src/Utils.h src/sdlglutils.cpp src/sdlglutils.h)
 
 if (WIN32)
     TARGET_LINK_LIBRARIES(

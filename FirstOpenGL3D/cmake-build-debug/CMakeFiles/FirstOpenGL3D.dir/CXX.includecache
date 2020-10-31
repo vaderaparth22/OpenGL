@@ -23,10 +23,18 @@ time.h
 -
 Utils.h
 D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/Utils.h
+sdlglutils.h
+D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/sdlglutils.h
 vector
 -
 fstream
 -
 iostream
+-
+
+D:/Class Stuff/ISI/Graphics Libraries/OpenGL/FirstOpenGL3D/src/sdlglutils.h
+GL/gl.h
+-
+SDL2/SDL.h
 -
 

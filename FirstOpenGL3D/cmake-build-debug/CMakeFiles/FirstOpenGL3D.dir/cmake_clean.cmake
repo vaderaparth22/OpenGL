@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj"
   "CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj"
+  "CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.obj"
   "FirstOpenGL3D.exe"
   "FirstOpenGL3D.exe.manifest"
   "FirstOpenGL3D.pdb"

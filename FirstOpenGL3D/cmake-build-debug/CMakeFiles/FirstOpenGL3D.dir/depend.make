@@ -6,4 +6,8 @@ CMakeFiles/FirstOpenGL3D.dir/src/MonCarre.cpp.obj: ../src/MonCarre.h
 
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj: ../src/Utils.h
 CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj: ../src/main.cpp
+CMakeFiles/FirstOpenGL3D.dir/src/main.cpp.obj: ../src/sdlglutils.h
+
+CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.obj: ../src/sdlglutils.cpp
+CMakeFiles/FirstOpenGL3D.dir/src/sdlglutils.cpp.obj: ../src/sdlglutils.h
 

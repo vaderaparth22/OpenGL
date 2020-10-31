@@ -3,6 +3,7 @@
 #include <GL/glu.h>
 #include <time.h>
 #include "Utils.h"
+#include "sdlglutils.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
@@ -203,35 +204,35 @@ public:
     bool OnCollisionEnter(Player* player)
     {
         float redLeft = this->getPositionX();
-        float redRight = 0.3f + 1;
+        float redRight = this->getPositionX() + 1.0f;
         float redTop = this->getPositionY();
         float redBottom = this->getPositionY() + 0.3f;
         float redForward = this->getPositionZ();
         float redBackward = this->getPositionZ() + 1.0f;
 
-        float blueLeft = player->getPositionX();
-        float blueRight = player->getPositionX() + 1.0f;
-        float blueTop = player->getPositionY();
-        float blueBottom = player->getPositionY() + 3.0f;
-        float blueForward = player->getPositionZ();
-        float blueBackward = player->getPositionZ() + 1.0f;
+        float playerLeft = player->getPositionX();
+        float playerRight = player->getPositionX() + 1.0f;
+        float playerTop = player->getPositionY();
+        float playerBottom = player->getPositionY() + 3.0f;
+        float playerForward = player->getPositionZ();
+        float playerBackward = player->getPositionZ() + 1.0f;
 
-        if ( redLeft > blueRight )
+        if (redLeft > playerRight)
             return false;
 
-        if ( redRight < blueLeft )
+        if (redRight < playerLeft)
             return false;
 
-        if ( redTop > blueBottom )
+        if (redTop > playerBottom)
             return false;
 
-        if ( redBottom < blueTop )
+        if ( redBottom < playerTop)
             return false;
 
-//        if(redForward > blueBackward)
+//        if(redForward > playerBackward)
 //            return false;
 //
-//        if(redBackward < blueForward)
+//        if(redBackward < playerForward)
 //            return false;
 
         return true;
@@ -248,9 +249,9 @@ float movementSpeed = .6f;
 int randomBetween;
 
 std::vector<Cube> cubes;
-Player player;
+Player* player = new Player();
 
-void drawFloor();
+void drawFloor(GLuint textureId);
 void setAllCubePositionsAtStart();
 
 
@@ -262,10 +263,12 @@ int main(int argc, char** argv) {
     win = SDL_CreateWindow("OpenGL Final Project", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     SDL_GLContext context = SDL_GL_CreateContext(win);
 
+    GLuint idTextureGround = loadTexture("../ground2.jpg");
+
     inputX = 0;
     inputZ = 0;
 
-    player.setPositionX(-2.0f);
+    player->setPositionX(-2.0f);
 
     srand(time(NULL));
 
@@ -306,12 +309,12 @@ int main(int argc, char** argv) {
             inputZ -= movementSpeed;
 
 
-        drawFloor();
+        drawFloor(idTextureGround);
 
-        player.setPositionX(inputX);
-        player.setPositionY(2.0f);
-        player.setPositionZ(inputZ);
-        player.Draw();
+        player->setPositionX(inputX);
+        player->setPositionY(2.0f);
+        player->setPositionZ(inputZ);
+        player->Draw();
 
         if(!cubes.empty())
         {
@@ -319,8 +322,9 @@ int main(int argc, char** argv) {
             {
                 cubes[i].Draw();
 
-                if(cubes[i].OnCollisionEnter(&player))
+                if(cubes[i].OnCollisionEnter(player))
                 {
+                    std::cout << "collision" << std::endl;
                     cubes.erase(cubes.begin() + i);
                 }
             }
@@ -333,6 +337,7 @@ int main(int argc, char** argv) {
         SDL_GL_SwapWindow(win);
     }
 
+    glDeleteTextures(1, &idTextureGround);
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(win);
     SDL_Quit();
@@ -340,22 +345,31 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void drawFloor()
+void drawFloor(GLuint textureId)
 {
     //FLOOR
     glPushMatrix();
     glTranslatef(0.0f,-1.0f,0.0f);
     glScalef(20.0f,0.0f,20.0f);
 
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
     glBegin(GL_QUADS);
 
-    glColor3ub(0, 100, 150); //face green
+    glColor3ub(255, 255, 255); //face green
+    glTexCoord2f(0.0, 0.0);
     glVertex3d(1, -2, -1);
+    glTexCoord2f(1.0, 0);
     glVertex3d(1, -2, 1);
+    glTexCoord2f(1.0, 1.0);
     glVertex3d(-1, -2,1);
+    glTexCoord2f(0.0, 1.0);
     glVertex3d(-1, -2, -1);
 
     glEnd();
+
+    glDisable(GL_TEXTURE_2D);
 
     glPopMatrix();
 }
@@ -368,7 +382,7 @@ void setAllCubePositionsAtStart()
     float yPos = -1.0f;
     float zPos = -18.0f;
 
-    for (int i = 0; i < 7; ++i)
+    for (int i = 0; i < 7; ++i) //7
     {
         Cube cubeForX;
         xPos -= 6.0f;
@@ -390,7 +404,7 @@ void setAllCubePositionsAtStart()
 
         cubes.push_back(cubeForX);
 
-        for (int j = 0; j < 6; ++j)
+        for (int j = 0; j < 6; ++j) //6
         {
             Cube cubeForZ;
 
@@ -408,7 +422,7 @@ void setAllCubePositionsAtStart()
             }
             else
             {
-                cubeForZ.setRGB(30,100,0);
+                cubeForZ.setRGB(50,150,0);
             }
 
             cubes.push_back(cubeForZ);
