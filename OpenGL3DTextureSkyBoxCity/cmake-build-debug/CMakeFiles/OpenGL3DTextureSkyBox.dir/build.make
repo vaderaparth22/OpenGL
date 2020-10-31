@@ -62,10 +62,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Games\Setups\OpenGL3DTextureSkyBoxCity
+CMAKE_SOURCE_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug
+CMAKE_BINARY_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OpenGL3DTextureSkyBox.dir/depend.make
@@ -78,42 +78,42 @@ include CMakeFiles/OpenGL3DTextureSkyBox.dir/flags.make
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj: CMakeFiles/OpenGL3DTextureSkyBox.dir/flags.make
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj: ../src/MonCarre.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.obj -c D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.obj -c "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp"
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp" > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.i
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\MonCarre.cpp" -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\MonCarre.cpp.s
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj: CMakeFiles/OpenGL3DTextureSkyBox.dir/flags.make
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.obj -c D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.obj -c "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\main.cpp"
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\main.cpp > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\main.cpp" > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.i
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\main.cpp -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\main.cpp" -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\main.cpp.s
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj: CMakeFiles/OpenGL3DTextureSkyBox.dir/flags.make
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj: ../src/utils/sdlglutils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.obj -c D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.obj -c "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp"
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp" > CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.i
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Games\Setups\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\src\utils\sdlglutils.cpp" -o CMakeFiles\OpenGL3DTextureSkyBox.dir\src\utils\sdlglutils.cpp.s
 
 # Object files for target OpenGL3DTextureSkyBox
 OpenGL3DTextureSkyBox_OBJECTS = \
@@ -131,7 +131,7 @@ OpenGL3DTextureSkyBox.exe: CMakeFiles/OpenGL3DTextureSkyBox.dir/build.make
 OpenGL3DTextureSkyBox.exe: CMakeFiles/OpenGL3DTextureSkyBox.dir/linklibs.rsp
 OpenGL3DTextureSkyBox.exe: CMakeFiles/OpenGL3DTextureSkyBox.dir/objects1.rsp
 OpenGL3DTextureSkyBox.exe: CMakeFiles/OpenGL3DTextureSkyBox.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable OpenGL3DTextureSkyBox.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable OpenGL3DTextureSkyBox.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\OpenGL3DTextureSkyBox.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -144,6 +144,6 @@ CMakeFiles/OpenGL3DTextureSkyBox.dir/clean:
 .PHONY : CMakeFiles/OpenGL3DTextureSkyBox.dir/clean
 
 CMakeFiles/OpenGL3DTextureSkyBox.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Games\Setups\OpenGL3DTextureSkyBoxCity D:\Games\Setups\OpenGL3DTextureSkyBoxCity D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles\OpenGL3DTextureSkyBox.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug" "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles\OpenGL3DTextureSkyBox.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/OpenGL3DTextureSkyBox.dir/depend
 

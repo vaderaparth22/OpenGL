@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/src/MonCarre.cpp" "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj"
-  "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/src/main.cpp" "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj"
-  "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/src/utils/sdlglutils.cpp" "D:/Games/Setups/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/src/MonCarre.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/MonCarre.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/src/main.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/main.cpp.obj"
+  "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/src/utils/sdlglutils.cpp" "D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/cmake-build-debug/CMakeFiles/OpenGL3DTextureSkyBox.dir/src/utils/sdlglutils.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

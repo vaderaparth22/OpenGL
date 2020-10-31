@@ -117,22 +117,95 @@ void drawCylinder() {
     gluQuadricDrawStyle(cylinder, GLU_FILL);
 }
 
-int main(int argc, char** argv) {
+void drawSkybox()
+{
+    //Dessin SkyBox
+
+//        glBindTexture(GL_TEXTURE_2D, idTextureSkyBox);
+//        glBegin(GL_QUADS);
+//
+//        glColor3ub(255, 255, 255);
+//        glTexCoord2d(.75,.66); glVertex3d(75, 75, 75);
+//        glTexCoord2d(.75,.33); glVertex3d(75, 75, -75);
+//        glTexCoord2d(1, .33); glVertex3d(-75, 75, -75);
+//        glTexCoord2d(1,.66); glVertex3d(-75, 75, 75);
+//
+//
+//        glTexCoord2d(0,.66);glVertex3d(75, -75, 75);
+//        glTexCoord2d(0,.33);glVertex3d(75, -75, -75);
+//        glTexCoord2d(.25,.33);glVertex3d(75, 75, -75);
+//        glTexCoord2d(.25,.66);glVertex3d(75, 75, 75);
+//
+////        glColor3ub(0, 0, 255); //face bleue
+//        glTexCoord2d(0.25,.66);glVertex3d(-75, -75, 75);
+//        glTexCoord2d(0.25,.33);glVertex3d(-75, -75, -75);
+//        glTexCoord2d(0.5,.33);glVertex3d(75, -75, -75);
+//        glTexCoord2d(0.5,.66);glVertex3d(75, -75, 75);
+//
+////        glColor3ub(255, 255, 0); //face jaune
+//        glTexCoord2d(0.5,.66);glVertex3d(-75, 75, 75);
+//        glTexCoord2d(0.5,.33);glVertex3d(-75, 75, -75);
+//        glTexCoord2d(0.75,.33);glVertex3d(-75, -75, -75);
+//        glTexCoord2d(0.75,.66);glVertex3d(-75, -75, 75);
+//
+////        glColor3ub(0, 255, 255); //face cyan
+//        glTexCoord2d(0.25,.33);glVertex3d(75, 75, -75);
+//        glTexCoord2d(0.25,0);glVertex3d(75, -75, -75);
+//        glTexCoord2d(0.5,0);glVertex3d(-75, -75, -75);
+//        glTexCoord2d(0.5,.33);glVertex3d(-75, 75, -75);
+//
+////        glColor3ub(255, 0, 255); //face magenta
+//        glTexCoord2d(0.25,1);glVertex3d(75, -75, 75);
+//        glTexCoord2d(0.25,.66);glVertex3d(75, 75, 75);
+//        glTexCoord2d(0.5,.66);glVertex3d(-75, 75, 75);
+//        glTexCoord2d(0.5,1);glVertex3d(-75, -75, 75);
+//
+//        glEnd();
+}
+
+void drawFloor(GLuint textureId)
+{
+    //FLOOR
+    glPushMatrix();
+    glTranslatef(0.0f,-1.0f,0.0f);
+    glScalef(20.0f,0.0f,20.0f);
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
+    glBegin(GL_QUADS);
+
+    glColor3ub(255, 255, 255);
+    glTexCoord2f(0.0, 0.0);
+    glVertex3d(1, -2, -1);
+    glTexCoord2f(1.0, 0);
+    glVertex3d(1, -2, 1);
+    glTexCoord2f(1.0, 1.0);
+    glVertex3d(-1, -2,1);
+    glTexCoord2f(0.0, 1.0);
+    glVertex3d(-1, -2, -1);
+
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+
+    glPopMatrix();
+}
+
+int main(int argc, char** argv)
+{
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_JPG|IMG_INIT_PNG);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    win = SDL_CreateWindow("OpenGl Test", SDL_WINDOWPOS_CENTERED,
-                           SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    win = SDL_CreateWindow("OpenGl Test", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     SDL_GLContext context = SDL_GL_CreateContext(win);
-//    SDL_GL_SetSwapInterval(1);
-    //charger la matrice de transformation
+
     dxCamera = 0;
     dyCamera = 0;
 
     GLuint idTextureSol = loadTexture("assets/img/herbe.jpg");
     GLuint idTextureSkyBox = loadTexture("assets/img/skybox.jpg");
-
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -142,9 +215,11 @@ int main(int argc, char** argv) {
 
     SDL_Event event;
     const Uint8* states = nullptr;
-    while (isRunning) {
-        //effacer le tampon d’affichage
-        glClearColor(0.f, 0.f, 0.f, 1.f);
+
+    while (isRunning)
+    {
+
+        glClearColor(0.f, 0.5f, 1.0f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glMatrixMode(GL_MODELVIEW);
@@ -154,8 +229,9 @@ int main(int argc, char** argv) {
        //glPushMatrix();
 
 
-        glRotated(angleRotationCamera, 0,0,1);
-        gluLookAt(dxCamera+4, dyCamera+4,4, dxCamera, dyCamera, 4, 0, 0, 1);
+        //glRotated(angleRotationCamera, 0,0,1);
+        //gluLookAt(dxCamera+4, dyCamera+4,4, dxCamera, dyCamera, 4, 0, 0, 1);
+        gluLookAt(0, 3, -50, 0, 0, 0, 0, 1, 0);
 
 
       // glPopMatrix();
@@ -175,121 +251,61 @@ int main(int argc, char** argv) {
         if (states[SDL_SCANCODE_DOWN])
             dyCamera += .5;
 
+        //drawPyramid();
+        drawFloor(idTextureSol);
 
+        //glPushMatrix();
+        //glTranslatef(dxCamera, dyCamera, 0);
 
-
-        //dessin
-
-        //sol
-//        //binder la texture
-//        glBindTexture(GL_TEXTURE_2D, idTextureSol);
 //        glBegin(GL_QUADS);
-//        glColor3ub(255, 255, 255);
-//        glTexCoord2d(0,0); glVertex3d(75, -75, -2);
-//        glTexCoord2d(10,0); glVertex3d(75, 75, -2);
-//        glTexCoord2d(10,10); glVertex3d(-75, 75,-2);
-//        glTexCoord2d(0,10); glVertex3d(-75, -75, -2);
+//
+//        glColor3ub(255, 0, 0); //face rouge
+//        glVertex3d(1, 1, 1);
+//        glVertex3d(1, 1, -1);
+//        glVertex3d(-1, 1, -1);
+//        glVertex3d(-1, 1, 1);
+//
+//        glColor3ub(0, 255, 0); //face verte
+//        glVertex3d(1, -1, 1);
+//        glVertex3d(1, -1, -1);
+//        glVertex3d(1, 1, -1);
+//        glVertex3d(1, 1, 1);
+//
+//        glColor3ub(0, 0, 255); //face bleue
+//        glVertex3d(-1, -1, 1);
+//        glVertex3d(-1, -1, -1);
+//        glVertex3d(1, -1, -1);
+//        glVertex3d(1, -1, 1);
+//
+//        glColor3ub(255, 255, 0); //face jaune
+//        glVertex3d(-1, 1, 1);
+//        glVertex3d(-1, 1, -1);
+//        glVertex3d(-1, -1, -1);
+//        glVertex3d(-1, -1, 1);
+//
+//        glColor3ub(0, 255, 255); //face cyan
+//        glVertex3d(1, 1, -1);
+//        glVertex3d(1, -1, -1);
+//        glVertex3d(-1, -1, -1);
+//        glVertex3d(-1, 1, -1);
+//
+//        glColor3ub(255, 0, 255); //face magenta
+//        glVertex3d(1, -1, 1);
+//        glVertex3d(1, 1, 1);
+//        glVertex3d(-1, 1, 1);
+//        glVertex3d(-1, -1, 1);
+//
 //        glEnd();
 
-        //drawMap();
-        drawPyramid();
-
-        glPushMatrix();
-        glTranslatef(dxCamera, dyCamera, 0);
-
-        glBegin(GL_QUADS);
-
-        glColor3ub(255, 0, 0); //face rouge
-        glVertex3d(1, 1, 1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, 1, 1);
-
-        glColor3ub(0, 255, 0); //face verte
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, 1, 1);
-
-        glColor3ub(0, 0, 255); //face bleue
-        glVertex3d(-1, -1, 1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(1, -1, 1);
-
-        glColor3ub(255, 255, 0); //face jaune
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, 1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, -1, 1);
-
-        glColor3ub(0, 255, 255); //face cyan
-        glVertex3d(1, 1, -1);
-        glVertex3d(1, -1, -1);
-        glVertex3d(-1, -1, -1);
-        glVertex3d(-1, 1, -1);
-
-        glColor3ub(255, 0, 255); //face magenta
-        glVertex3d(1, -1, 1);
-        glVertex3d(1, 1, 1);
-        glVertex3d(-1, 1, 1);
-        glVertex3d(-1, -1, 1);
-
-        glEnd();
-
-        glPushMatrix();
-        drawCylinder();
-        glPopMatrix();
-
-        glPopMatrix();
+//        glPushMatrix();
+//        drawCylinder();
+//        glPopMatrix();
+//
+//        glPopMatrix();
 
 //
 //        Utils::dessinerRepere(.5);
 
-
-
-//Dessin SkyBox
-
-        glBindTexture(GL_TEXTURE_2D, idTextureSkyBox);
-        glBegin(GL_QUADS);
-
-        glColor3ub(255, 255, 255);
-        glTexCoord2d(.75,.66); glVertex3d(75, 75, 75);
-        glTexCoord2d(.75,.33); glVertex3d(75, 75, -75);
-        glTexCoord2d(1, .33); glVertex3d(-75, 75, -75);
-        glTexCoord2d(1,.66); glVertex3d(-75, 75, 75);
-
-
-        glTexCoord2d(0,.66);glVertex3d(75, -75, 75);
-        glTexCoord2d(0,.33);glVertex3d(75, -75, -75);
-        glTexCoord2d(.25,.33);glVertex3d(75, 75, -75);
-        glTexCoord2d(.25,.66);glVertex3d(75, 75, 75);
-
-//        glColor3ub(0, 0, 255); //face bleue
-        glTexCoord2d(0.25,.66);glVertex3d(-75, -75, 75);
-        glTexCoord2d(0.25,.33);glVertex3d(-75, -75, -75);
-        glTexCoord2d(0.5,.33);glVertex3d(75, -75, -75);
-        glTexCoord2d(0.5,.66);glVertex3d(75, -75, 75);
-
-//        glColor3ub(255, 255, 0); //face jaune
-        glTexCoord2d(0.5,.66);glVertex3d(-75, 75, 75);
-        glTexCoord2d(0.5,.33);glVertex3d(-75, 75, -75);
-        glTexCoord2d(0.75,.33);glVertex3d(-75, -75, -75);
-        glTexCoord2d(0.75,.66);glVertex3d(-75, -75, 75);
-
-//        glColor3ub(0, 255, 255); //face cyan
-        glTexCoord2d(0.25,.33);glVertex3d(75, 75, -75);
-        glTexCoord2d(0.25,0);glVertex3d(75, -75, -75);
-        glTexCoord2d(0.5,0);glVertex3d(-75, -75, -75);
-        glTexCoord2d(0.5,.33);glVertex3d(-75, 75, -75);
-
-//        glColor3ub(255, 0, 255); //face magenta
-        glTexCoord2d(0.25,1);glVertex3d(75, -75, 75);
-        glTexCoord2d(0.25,.66);glVertex3d(75, 75, 75);
-        glTexCoord2d(0.5,.66);glVertex3d(-75, 75, 75);
-        glTexCoord2d(0.5,1);glVertex3d(-75, -75, 75);
-
-        glEnd();
 
         //pause
         SDL_Delay(3);

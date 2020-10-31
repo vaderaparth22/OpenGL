@@ -63,10 +63,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Games\Setups\OpenGL3DTextureSkyBoxCity
+CMAKE_SOURCE_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug
+CMAKE_BINARY_DIR = "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/OpenGL3DTextureSkyBox.dir/clean
 CMakeFiles/OpenGL3DTextureSkyBox.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGL3DTextureSkyBox.dir\build.make CMakeFiles/OpenGL3DTextureSkyBox.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGL3DTextureSkyBox.dir\build.make CMakeFiles/OpenGL3DTextureSkyBox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target OpenGL3DTextureSkyBox"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4 "Built target OpenGL3DTextureSkyBox"
 .PHONY : CMakeFiles/OpenGL3DTextureSkyBox.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/OpenGL3DTextureSkyBox.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/OpenGL3DTextureSkyBox.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Games\Setups\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Class Stuff\ISI\Graphics Libraries\OpenGL\OpenGL3DTextureSkyBoxCity\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/OpenGL3DTextureSkyBox.dir/rule
 
 # Convenience name for target.
