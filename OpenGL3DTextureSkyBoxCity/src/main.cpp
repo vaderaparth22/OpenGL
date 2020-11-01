@@ -7,6 +7,7 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
+#include <cmath>
 
 class Player
 {
@@ -160,6 +161,8 @@ private:
     float posX;
     float posY;
     float posZ;
+    float gravityValue;
+
 public:
     float getPosX() const {
         return posX;
@@ -183,6 +186,14 @@ public:
 
     void setPosZ(float posZ) {
         Box::posZ = posZ;
+    }
+
+    float getGravityValue() const {
+        return gravityValue;
+    }
+
+    void setGravityValue(float gravityValue) {
+        Box::gravityValue = gravityValue;
     }
 
     void setRandomXZ()
@@ -239,9 +250,9 @@ public:
         glPopMatrix();
     }
 
-    void setGravity(float gravityValue)
+    void setGravity()
     {
-        setPosY(getPosY() - gravityValue);
+        setPosY(getPosY() - getGravityValue());
     }
 
     bool isColliding(Player player, Ground ground)
@@ -285,6 +296,7 @@ int count = 0;
 bool isGameOver = false;
 std::vector<Box> boxes;
 static const Uint32 MS_PER_SECOND = 1000;
+static const int MAX_BOX_COLLISION_COUNT = 5;
 
 void drawCube(); // forward declaration
 void drawPyramid();
@@ -426,6 +438,9 @@ void spawnBox()
     Box box;
     box.setPosY(15.0f);
     box.setRandomXZ();
+
+    float g = (rand()) / ( static_cast <float> (RAND_MAX/(0.5 - 0.2)));
+    box.setGravityValue(g);
     boxes.push_back(box);
 }
 
@@ -434,7 +449,7 @@ void drawBoxes(Player player, Ground ground)
     if(!boxes.empty())
     {
         for (int i = 0; i < boxes.size(); ++i) {
-            boxes[i].setGravity(0.1f);
+            boxes[i].setGravity();
             boxes[i].draw();
 
             if(boxes[i].isColliding(player, ground))
@@ -465,6 +480,7 @@ int main(int argc, char** argv)
     Uint32 previousTime = SDL_GetTicks();
     Uint32 currentTime = SDL_GetTicks();
     Uint32 deltaTime;
+    Uint32 randomSpawnTime = 6000;
 
     GLuint idTextureSol = loadTexture("assets/img/herbe.jpg");
     GLuint idTextureSol2 = loadTexture("assets/img/sol.jpg");
@@ -547,10 +563,11 @@ int main(int argc, char** argv)
             if(timer >= 3000)
             {
                 spawnBox();
+                //randomSpawnTime = (rand() % 5000) + 1000;
                 timer -= 3000;
             }
 
-            if(count >= 5)
+            if(count >= MAX_BOX_COLLISION_COUNT)
             {
                 isGameOver = true;
                 std::cout << "GAME OVER!" << std::endl;
