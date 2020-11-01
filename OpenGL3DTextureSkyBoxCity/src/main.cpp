@@ -7,7 +7,6 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
-#include <cmath>
 
 class Player
 {
@@ -270,10 +269,10 @@ public:
         playerRect.h = 5;
 
         SDL_Rect groundRect;
-        groundRect.x = ground.getPosX();
-        groundRect.y = ground.getPosY();
         groundRect.w = 20;
-        groundRect.h = 5;
+        groundRect.h = 2;
+        groundRect.x = ground.getPosZ() + groundRect.w;
+        groundRect.y = ground.getPosY() + groundRect.h;
 
         if(SDL_HasIntersection(&myRect, &playerRect) || SDL_HasIntersection(&myRect, &groundRect))
         {
@@ -373,35 +372,6 @@ void drawSkybox()
 //        glTexCoord2d(0.5,1);glVertex3d(-75, -75, 75);
 //
 //        glEnd();
-}
-
-void drawGround(GLuint textureId)
-{
-    //FLOOR
-    glPushMatrix();
-    glTranslatef(0.0f,-5.0f,0.0f);
-    glScalef(20.0f,0.0f,20.0f);
-
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textureId);
-
-    glBegin(GL_QUADS);
-
-    glColor3ub(255, 255, 255);
-    glTexCoord2f(0.0, 0.0);
-    glVertex3d(1, -2, -1);
-    glTexCoord2f(1.0, 0);
-    glVertex3d(1, -2, 1);
-    glTexCoord2f(1.0, 1.0);
-    glVertex3d(-1, -2,1);
-    glTexCoord2f(0.0, 1.0);
-    glVertex3d(-1, -2, -1);
-
-    glEnd();
-
-    glDisable(GL_TEXTURE_2D);
-
-    glPopMatrix();
 }
 
 void drawUpperFloor(GLuint textureId)
@@ -504,7 +474,7 @@ int main(int argc, char** argv)
         deltaTime = currentTime - previousTime;
 
         if (deltaTime == 0) {
-            deltaTime = MS_PER_SECOND; // avoid division by zero
+            deltaTime = MS_PER_SECOND;
         }
         previousTime = currentTime;
 
@@ -582,7 +552,10 @@ int main(int argc, char** argv)
     glDeleteTextures(1, &idTextureSol);
     glDeleteTextures(1, &idTextureSkyBox);
 
-    boxes.clear();
+    delete(&ground);
+    delete(&player);
+    delete(&boxes);
+
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(win);
     IMG_Quit();

@@ -31,8 +31,6 @@ time.h
 -
 iostream
 -
-cmath
--
 
 D:/Class Stuff/ISI/Graphics Libraries/OpenGL/OpenGL3DTextureSkyBoxCity/src/utils/sdlglutils.h
 GL/gl.h
