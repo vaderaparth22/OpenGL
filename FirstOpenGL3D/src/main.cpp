@@ -237,6 +237,30 @@ public:
 
         return true;
     }
+
+    bool isColliding(Player* player)
+    {
+        SDL_Rect  myRect;
+        myRect.x = getPositionX();
+        myRect.y = getPositionY();
+        myRect.w = 1;
+        myRect.h = 1;
+
+        SDL_Rect playerRect;
+
+        playerRect.w = 1;
+        playerRect.h = 1;
+        playerRect.x = player->getPositionX();
+        playerRect.y = player->getPositionY();
+
+        if(SDL_HasIntersection(&myRect, &playerRect))
+        {
+            std::cout << getPositionX() << " " << getPositionY() << std::endl;
+            return true;
+        }
+
+        return false;
+    }
 };
 
 SDL_Window* win;
@@ -247,6 +271,7 @@ float inputX = 0;
 float inputZ = 0;
 float movementSpeed = .6f;
 int randomBetween;
+int hitCount = 0;
 float MAX_BOUND_VALUE = 18.6;
 
 std::vector<Cube> cubes;
@@ -340,9 +365,19 @@ int main(int argc, char** argv) {
             {
                 cubes[i].Draw();
 
-                if(cubes[i].OnCollisionEnter(player))
+//                if(cubes[i].OnCollisionEnter(player))
+//                {
+//                    std::cout << "collision" << std::endl;
+//                    cubes.erase(cubes.begin() + i);
+//                }
+
+                if(cubes[i].isColliding(player))
                 {
-                    std::cout << "collision" << std::endl;
+                    if(cubes[i].getIsEnemy())
+                        hitCount--;
+                    else
+                        hitCount++;
+
                     cubes.erase(cubes.begin() + i);
                 }
             }
