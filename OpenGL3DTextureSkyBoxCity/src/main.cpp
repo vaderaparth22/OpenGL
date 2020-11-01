@@ -297,37 +297,6 @@ std::vector<Box> boxes;
 static const Uint32 MS_PER_SECOND = 1000;
 static const int MAX_BOX_COLLISION_COUNT = 5;
 
-void drawCube(); // forward declaration
-void drawPyramid();
-
-void drawPyramid() {
-    glBegin(GL_TRIANGLES);
-    //Triangle 1
-    glColor3f(1.0f,0.0f,0.0f); glVertex3f( 0.0f, 1.0f, 0.0f);   //V0(red)
-    glColor3f(0.0f,1.0f,0.0f); glVertex3f(-1.0f,-1.0f, 1.0f);   //V1(green)
-    glColor3f(0.0f,0.0f,1.0f); glVertex3f( 1.0f,-1.0f, 1.0f);   //V2(blue)
-    //Triangle 2
-    glColor3f(1.0f,0.0f,0.0f); glVertex3f( 0.0f, 1.0f, 0.0f);   //V0(red)
-    glColor3f(0.0f,0.0f,1.0f); glVertex3f( 1.0f,-1.0f, 1.0f);   //V2(blue)
-    glColor3f(0.0f,1.0f,0.0f); glVertex3f( 1.0f,-1.0f,-1.0f);   //V3(green)
-    //Triangle 3
-    glColor3f(1.0f,0.0f,0.0f); glVertex3f( 0.0f, 1.0f, 0.0f);   //V0(red)
-    glColor3f(0.0f,1.0f,0.0f); glVertex3f( 1.0f,-1.0f,-1.0f);   //V3(green)
-    glColor3f(0.0f,0.0f,1.0f); glVertex3f(-1.0f,-1.0f,-1.0f);   //V4(blue)
-    //Triangle 4
-    glColor3f(1.0f,0.0f,0.0f); glVertex3f( 0.0f, 1.0f, 0.0f);   //V0(red)
-    glColor3f(0.0f,0.0f,1.0f); glVertex3f(-1.0f,-1.0f,-1.0f);   //V4(blue)
-    glColor3f(0.0f,1.0f,0.0f); glVertex3f(-1.0f,-1.0f, 1.0f);   //V1(green)
-    glEnd();
-}
-
-void drawCylinder() {
-    static GLUquadricObj* cylinder = gluNewQuadric();
-    glColor3f(1.0, 1.0, 1.0);
-    gluCylinder(cylinder, 1.0, 1, 3, 30, 30);
-    gluQuadricDrawStyle(cylinder, GLU_FILL);
-}
-
 void drawSkybox()
 {
     //Dessin SkyBox
@@ -425,6 +394,7 @@ void drawBoxes(Player player, Ground ground)
             if(boxes[i].isColliding(player, ground))
             {
                 count++;
+                std::cout << "Boxes hit : " << count << std::endl;
                 boxes.erase(boxes.begin() + i);
             }
         }
@@ -551,10 +521,6 @@ int main(int argc, char** argv)
 
     glDeleteTextures(1, &idTextureSol);
     glDeleteTextures(1, &idTextureSkyBox);
-
-    delete(&ground);
-    delete(&player);
-    delete(&boxes);
 
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(win);
